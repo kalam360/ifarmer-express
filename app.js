@@ -41,6 +41,15 @@ app.get("/multichain/assets", (req, res) => {
   });
 });
 
+app.get("/multichain/assets/:name", (req, res) => {
+  multichain.listAssets({ asset: req.params.name }, (err, info) => {
+    if (err) {
+      throw err;
+    }
+    res.send(info);
+  });
+});
+
 app.get('/defi/protocols', (req, res) => {
     defisdk.getProtocolNames().then((protocols) => {
       res.send(protocols)
