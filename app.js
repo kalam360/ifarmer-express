@@ -9,7 +9,7 @@ const port = 3000;
 // Multichain Setup
 let multichain = require("multichain-node")({
   port: 2021,
-  host: "13.229.56.89",
+  host: config.host,
   user: config.user,
   pass: config.pass,
 });
@@ -25,6 +25,15 @@ const defisdk = new DeFiSDK(nodeURL);
 
 app.get("/multichain/getinfo", (req, res) => {
   multichain.getInfo((err, info) => {
+    if (err) {
+      throw err;
+    }
+    res.send(info);
+  });
+});
+
+app.get("/multichain/assets", (req, res) => {
+  multichain.listAssets({asset: "*"}, (err, info) => {
     if (err) {
       throw err;
     }
