@@ -1,6 +1,7 @@
 const express = require('express')
 let config = require('./config.json')
 const {DeFiSDK} = require('defi-sdk')
+const Web3 = require('web3')
 
 const app = express();
 
@@ -19,6 +20,10 @@ let multichain = require("multichain-node")({
 // DeFi Setup
 nodeURL = config.nodeURL;
 const defisdk = new DeFiSDK(nodeURL);
+
+let web3 = new Web3(config.nodeURL)
+
+
 
 
 
