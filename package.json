@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "defi-sdk": "^0.0.1",
+    "express": "^4.17.1",
+    "multichain-node": "^2.2.0-version1.0.4"
+  }
+}
